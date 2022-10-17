@@ -28,16 +28,5 @@ class Post extends Model
         return $this->hasMany(__NAMESPACE__ . '\PostLike');
     }
 
-    // Скоуп "опубликованные посты"
-    public function scopePublished($query)
-    {
-        return $query->where('state', 'published');
-    }
-    
-    // Скоуп "Самые залайканные с лимитом"
-    public function scopeLikesLimit($query, $limit)
-    {
-        return $query->orderBy('likes_count', 'desc')->limit($limit);
-    }
     
 }
