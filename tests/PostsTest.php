@@ -48,8 +48,6 @@ class PostsTest extends BaseTest
             'creator_id' => $this->user2->id,
             'post_id' => $this->post4->id,
         ]);
-
-
     }
 
     public function testCreate()
@@ -113,4 +111,20 @@ class PostsTest extends BaseTest
 //        $this->assertEquals($expected, $items->toArray());
 //    }
 
+//    public function testIndexPopular()
+//    {
+//        $user = $this->factory->create(User::class);
+//        $postsLike = collect([
+//            Post::create(),
+//            Post::create(),
+//            Post::create(),
+//            Post::create()
+//        ]);
+//
+//        $posts = Posts::indexPopular($user, 2);
+//        $postsIds = $posts->pluck('id');
+//        $expected = $postsLike->where('state', 'published')
+//            ->sortByDesc('likes_count')->take(2)->pluck('id');
+//        $this->assertEquals($expected, $postsIds);
+//    }
 }

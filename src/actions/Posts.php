@@ -51,4 +51,12 @@ class Posts
         return $result;
         // END
     }
+
+    /*
+     * returns a list of the most popular (most likes) published posts, working with scope
+     */
+    public static function indexPopular($user, $limit)
+    {
+        return $user->posts()->published()->likesLimit($limit);
+    }
 }
