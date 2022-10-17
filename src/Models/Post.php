@@ -10,6 +10,7 @@ class Post extends Model
 
     public function creator()
     {
+        // belongsTo определяется у модели содержащей внешний ключ
         return $this->belongsTo(__NAMESPACE__ . '\User');
     }
 
@@ -23,9 +24,11 @@ class Post extends Model
         return $this->hasMany(__NAMESPACE__ . '\Tag');
     }
 
+    // связь поста с лайками
     public function likes()
     {
-        return $this->hasMany(__NAMESPACE__ . '\PostLike');
+        // hasMany определяется у модели, имеющей внешние ключи в других таблицах
+        return $this->hasMany(__NAMESPACE__ . '\PostLike', 'post_id');
     }
 
     

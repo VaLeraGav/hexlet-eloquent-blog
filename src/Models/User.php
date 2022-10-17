@@ -13,8 +13,10 @@ class User extends Model
         return $this->hasMany(__NAMESPACE__ . '\Post', 'creator_id');
     }
 
+    // связь пользователя с лайками
     public function postLikes()
     {
-        return $this->hasMany(__NAMESPACE__ . '\PostLike');
+        return $this->hasMany(__NAMESPACE__ . '\PostLike', 'post_id');
     }
+
 }
