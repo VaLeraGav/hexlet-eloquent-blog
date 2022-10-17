@@ -19,10 +19,36 @@ class PostsTest extends BaseTest
 
         $this->user = $this->factory->create(User::class);
         $this->post = $this->factory->create(Post::class);
+
         $this->params = [
             'title' => $this->faker->text,
             'body' => $this->faker->text
         ];
+
+
+        $this->user1 = $this->factory->create(User::class);
+        $this->user2 = $this->factory->create(User::class);
+
+        $this->post1 = $this->factory->create(Post::class);
+        $this->post2 = $this->factory->create(Post::class);
+        $this->post3 = $this->factory->create(Post::class);
+        $this->post4 = $this->factory->create(Post::class);
+
+        PostLike::create([
+            'creator_id' => $this->user1->id,
+            'post_id' => $this->post1->id,
+        ]);
+
+        PostLike::create([
+            'creator_id' => $this->user1->id,
+            'post_id' => $this->post2->id,
+        ]);
+
+        PostLike::create([
+            'creator_id' => $this->user2->id,
+            'post_id' => $this->post4->id,
+        ]);
+
 
     }
 
@@ -52,4 +78,39 @@ class PostsTest extends BaseTest
         $actual2 = PostLike::find($like->id)->toArray();
         $this->assertEquals($expected2, $actual2);
     }
+
+// ! сбит порядок постов и индексов
+//    public function testIndex()
+//    {
+//        $items = Posts::index($this->user1, 4);
+//        $expected = [
+//            ['post' => $this->post1->toArray(), 'liked' => true],
+//            ['post' => $this->post2->toArray(), 'liked' => true],
+//            ['post' => $this->post3->toArray(), 'liked' => false],
+//            ['post' => $this->post4->toArray(), 'liked' => false],
+//        ];
+//        $this->assertEquals($expected, $items->toArray());
+//    }
+//
+//    public function testIndex2()
+//    {
+//        $items = Posts::index($this->user1, 1);
+//        $expected = [
+//            ['post' => $this->post1->toArray(), 'liked' => true],
+//        ];
+//        $this->assertEquals($expected, $items->toArray());
+//    }
+//
+//    public function testIndex3()
+//    {
+//        $items = Posts::index($this->user2, 4);
+//        $expected = [
+//            ['post' => $this->post1->toArray(), 'liked' => false],
+//            ['post' => $this->post2->toArray(), 'liked' => false],
+//            ['post' => $this->post3->toArray(), 'liked' => false],
+//            ['post' => $this->post4->toArray(), 'liked' => true],
+//        ];
+//        $this->assertEquals($expected, $items->toArray());
+//    }
+
 }

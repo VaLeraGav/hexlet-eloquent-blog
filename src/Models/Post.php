@@ -11,7 +11,7 @@ class Post extends Model
     public function creator()
     {
         // belongsTo определяется у модели содержащей внешний ключ
-        return $this->belongsTo(__NAMESPACE__ . '\User');
+        return $this->belongsTo(__NAMESPACE__ . '\User', 'creator_id');
     }
 
     public function comments()

@@ -26,7 +26,7 @@ class UsersTest extends BaseTest
     public function testIndex()
     {
         $users = Users::index();
-//        print_r($users->toArray());
+//      print_r($users->toArray());
         $this->assertCount(6, $users);
     }
 
@@ -64,8 +64,8 @@ class UsersTest extends BaseTest
 
         $user2 = User::find($user->id);
         $this->assertNull($user2);
-
     }
+
     public function testQuery()
     {
         $result = Users::indexQuery([]);
@@ -97,7 +97,7 @@ class UsersTest extends BaseTest
         $result = Users::indexQuery($params);
         $this->assertCount(6, $result);
 
-        print_r($this->user3->id);
+//      print_r($this->user3->id);
 
 //      $expected = [ 1, 2, 4, 5, $this->user1->id, $this->user2->id, $this->user3->id];
 //      $this->assertEquals($expected, $result->pluck('id')->toArray());

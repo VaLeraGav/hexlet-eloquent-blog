@@ -13,7 +13,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(PostTag::class, function (Faker $faker) {
+$factory->define(\App\Models\PostTag::class, function (Faker $faker) {
     return [
         'post_id' => function () {
             return \App\Models\Post::first()->id;
