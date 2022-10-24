@@ -24,5 +24,5 @@ project sources: https://github.com/hexlet-components/php-eloquent-blog
 
 ### Error:
 
-- ошибка с базами данных
 - нужно разобраться с тестами 
+- работа с базой только через console
